@@ -5,6 +5,7 @@ createApp({
     return{
       emails: [],
       apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail',
+
     }
   },
 
@@ -18,12 +19,19 @@ createApp({
         console.log(this.emails);
       })
     }
+   },
+
+   checkEmail(){
+    if(this.emails.length === 10){
+     return this.emails
+    }
    }
 
   },
 
   mounted(){
-    this.createEmail()
+    this.createEmail();
+    
   }
 }).mount('#app');
 
