@@ -8,7 +8,8 @@ createApp({
     }
   },
 
-  mounted(){
+  methods:{
+   createEmail(){
     for (let i = 0; i < 10; i++) {
 
       axios.get(this.apiUrl)
@@ -17,8 +18,12 @@ createApp({
         console.log(this.emails);
       })
     }
+   }
 
-   
+  },
+
+  mounted(){
+    this.createEmail()
   }
 }).mount('#app');
 
