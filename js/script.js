@@ -4,13 +4,24 @@ createApp({
   data(){
     return{
       email: '',
+      min: '10',
+      max: '100',
+      items: '10',
+      apiUrl: 'https://flynn.boolean.careers/exercises/api/random/mail',
     }
   },
 
   mounted(){
-    axios.get('https://flynn.boolean.careers/exercises/api/random/mail')
+    this.email = 'Loading'
+    axios.get(this.apiUrl + `?min=${this.min}&max=${this.max}&items=${this.items}`)
     .then((risposta) =>{
-      console.log(risposta.data.response);
+      console.log(risposta.data);
+      this.email = risposta.data.response
+      console.log(this.email);
+    })
+
+    .catch((errore) =>{
+      console.log(errore);
     })
   }
 }).mount('#app');
